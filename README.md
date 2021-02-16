@@ -99,5 +99,5 @@ test_user.py
 ## Authors :black_nib:
 * **Amilcar Armmand** - [AmilcarArmmand](https://github.com/AmilcarArmmand)
 * **Maxwell Lovell** - [Johnbogey](https://github.com/JohnBogey)
-* **Matthew Feliciano** - [Mattmatt778](https://github.com/Mattmatt778)
+* **Matthew Feliciano** - [Mfeliciano778](https://github.com/Mfeliciano778)
 
