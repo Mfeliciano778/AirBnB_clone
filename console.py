@@ -1,6 +1,13 @@
 #!/usr/bin/python3
 '''Code for HBNB console, commands, and options'''
 
+from models import base_model
+from models import user
+from models import state
+from models import city
+from models import place
+from models import amenity
+from models import review
 import cmd
 
 
