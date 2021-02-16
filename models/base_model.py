@@ -2,7 +2,8 @@
 '''BaseModel class'''
 import json
 import uuid
-from datetime import datetime as time
+from datetime import datetime as tim
+from models.__init__ import storage
 
 
 class BaseModel():
@@ -18,14 +19,14 @@ class BaseModel():
                     setattr(self, key, type(self))
                 elif key == 'created_at' or key == 'updated_at':
                     setattr(self, key,
-                            time.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                            tim.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
                 else:
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = time.now()
+            self.created_at = tim.now()
             self.updated_at = self.created_at
-            #storage here
+            storage.new(self)
 
     def __str__(self):
         '''__str__string rep of basemodel instance'''
@@ -34,8 +35,8 @@ class BaseModel():
 
     def save(self):
         '''save - udpate updated_at'''
-        self.updated_at = time.now()
-        #storage here
+        self.updated_at = tim.now()
+        storage.save()
 
     def to_dict(self):
         '''to_dict - gives dictionary rep of instance attr'''
