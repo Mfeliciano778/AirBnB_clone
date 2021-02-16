@@ -3,8 +3,7 @@
 import json
 import uuid
 from datetime import datetime as tim
-from models.__init__ import storage
-
+import models
 
 class BaseModel():
     '''BaseModel - defines all common attributes/methods for other classes'''
@@ -26,7 +25,7 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = tim.now()
             self.updated_at = self.created_at
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         '''__str__string rep of basemodel instance'''
@@ -36,7 +35,7 @@ class BaseModel():
     def save(self):
         '''save - udpate updated_at'''
         self.updated_at = tim.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         '''to_dict - gives dictionary rep of instance attr'''
