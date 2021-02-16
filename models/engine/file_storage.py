@@ -14,13 +14,13 @@ from models.review import Review
 
 # list or dictionary for case validation (need to add pattern of dict)
 a_dict = {
-    "BaseModel": base_model.BaseModel,
-    "User": user.User,
-    "City": city.City,
-    "State": state.State,
-    "Amenity": amenity.Amenity,
-    "Place": place.Place,
-    "Review": review.Review
+    "BaseModel": BaseModel,
+    "User": User,
+    "City": City,
+    "State": State,
+    "Amenity": Amenity,
+    "Place": Place,
+    "Review": Review
 }
 
 class FileStorage:
