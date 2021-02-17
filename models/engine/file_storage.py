@@ -23,6 +23,7 @@ a_dict = {
     "Review": Review
 }
 
+
 class FileStorage:
     """ Serializes and deserializes object instances to JSON files """
 
