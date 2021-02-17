@@ -23,6 +23,7 @@ a_dict = {
     "Review": Review
 }
 
+
 class FileStorage:
     """ Serializes and deserializes object instances to JSON files """
 
@@ -31,7 +32,7 @@ class FileStorage:
 
     def all(self, cls=None):
         """ Returns the dictionary __objects """
-        if cls is not None:
+        if cls:
             new_obj = {}
             for key, value in FileStorage.__objects.items():
                 if type(value).__name__ == cls:
@@ -48,14 +49,24 @@ class FileStorage:
 
     def save(self):
         """ Serializes __objects to the JSON file (path: __file_path) """
-        with open(filename, 'w', encoding='utf-8') as myfile:
-            json.dump(my_obj, myfile)
+        my_obj = {}
+        for key, value in self.__objects.items():
+            my_obj[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, 'w', encoding='utf-8') as f:
+            json.dump(my_obj, f)
 
     def reload(self):
         """  deserializes the JSON file to __objects """
-        # (only if the JSON file (__file_path) exists
-        # otherwise, do nothing. 
-        # If the file doesn’t exist, no exception should be raised)
+        try:
+            with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
+                djo = json.load(f)
+            for key in djo:
+                self.__objects[key] = a_dict[djo[key]['__class__']](**djo[key])
+        except:
+            pass
 
     def delete(self, obj=None):
         """ Deletes obj from __objects if it exists """
+        # if object exists
+        # if key matches
+        # delete object[key]
