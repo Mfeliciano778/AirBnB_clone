@@ -71,7 +71,7 @@ of all instances based or not on class name'''
                 print("** class doesn't exist **")
                 return
             else:
-                for inst in models.storage.all().keys():  # BaseModel.6879234rq798623416789
+                for inst in models.storage.all().keys():
                     instan = inst.split('.')
                     if instan[0] == arg[0]:
                         print(models.storage.all()[inst])
