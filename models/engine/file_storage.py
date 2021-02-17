@@ -31,7 +31,7 @@ class FileStorage:
 
     def all(self, cls=None):
         """ Returns the dictionary __objects """
-        if cls:
+        if cls is not None:
             new_obj = {}
             for key, value in FileStorage.__objects.items():
                 if type(value).__name__ == cls:
@@ -48,23 +48,14 @@ class FileStorage:
 
     def save(self):
         """ Serializes __objects to the JSON file (path: __file_path) """
-        my_obj = {}
-        for key in self.__objects:
-            my_obj[key] = self.__objects[key].to_dict()
-        with open(FileStorage.__file_path, 'w', encoding='utf-8') as f:
-            json.dump(my_obj, f)
+        with open(filename, 'w', encoding='utf-8') as myfile:
+            json.dump(my_obj, myfile)
 
     def reload(self):
         """  deserializes the JSON file to __objects """
-        try:
-            with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
-                json_obj = json.load(f)
-            for key, value in json_obj.items():
-                FileStorage.__objects[key] = FileStorage.a_dict[value.__class__](**value)
-        except:
-            pass
+        # (only if the JSON file (__file_path) exists
+        # otherwise, do nothing. 
+        # If the file doesn’t exist, no exception should be raised)
 
     def delete(self, obj=None):
         """ Deletes obj from __objects if it exists """
-        if obj is not None:
-            key = obj.__class
