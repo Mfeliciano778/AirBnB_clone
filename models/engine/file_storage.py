@@ -30,17 +30,6 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def all(self, cls=None):
-        """ Returns the dictionary __objects """
-        if cls:
-            new_obj = {}
-            for key, value in FileStorage.__objects.items():
-                if type(value).__name__ == cls:
-                    new_obj[key] = obj
-                return new_obj
-        else:
-            return self.__objects
-
     def new(self, obj):
         """  sets in __objects the obj with key <obj class name>.id """
         if obj is not None:
@@ -64,9 +53,3 @@ class FileStorage:
                 self.__objects[key] = a_dict[djo[key]['__class__']](**djo[key])
         except:
             pass
-
-    def delete(self, obj=None):
-        """ Deletes obj from __objects if it exists """
-        # if object exists
-        # if key matches
-        # delete object[key]
