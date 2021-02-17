@@ -55,7 +55,7 @@ of a instance based on class name and id'''
             print("** instance id missing **")
             return
         argument = arg[0] + "." + arg[1]  # class.id
-        if argument not in models.storage.all().keys:  # object exist storage?
+        if argument not in models.storage.all():  # object exist storage?
             print("** no instance found **")
             return
         else:
@@ -65,16 +65,20 @@ of a instance based on class name and id'''
     def do_all(self, arg):
         '''all, prints string representation\
 of all instances based or not on class name'''
-        if arg:
+        arg = arg.split()
+        if arg:  # all <classname> OR all
             if arg[0] not in self.classes:  # class exist?
                 print("** class doesn't exist **")
                 return
             else:
-                # print all instances of class
-                pass
+                for inst in models.storage.all().keys():  # BaseModel.6879234rq798623416789
+                    instan = inst.split('.')
+                    if instan[0] == arg[0]:
+                        print(models.storage.all()[inst])
         else:
             # print all instances
-            pass
+            for inst in models.storage.all().keys():
+                print(models.storage.all()[inst])
 
     # ----- manage instances -----
     def do_create(self, arg):
@@ -105,11 +109,12 @@ e.x. "create User"'''
             print("** instance id missing **")
             return
         argument = arg[0] + "." + arg[1]  # class.id
-        if True:  # search storage for matching id
+        if argument not in models.storage.all():  # object exist storage?
             print("** no instance found **")
+            return
         else:
-            # delete instance and save change
-            pass
+            models.storage.all().pop(argument)
+            models.storage.save()
 
     def do_update(self, arg):
         '''update, updates an instance based on class name and id by\
@@ -125,7 +130,7 @@ e.x. "create User"'''
             print("** instance id missing **")
             return
         argument = arg[0] + "." + arg[1]  # class.id
-        if argument not in models.storage.all().keys:  # object exist storage?
+        if argument not in models.storage.all():  # object exist storage?
             print("** no instance found **")
             return
         elif len(arg) < 3:  # attr arg exist?
@@ -136,11 +141,11 @@ e.x. "create User"'''
             return
         else:
             obj = models.storage.all()[argument]  # __objects.all()[User.'id']
-            if arg[2] in obj.to_dict().keys():  # get instance from spec. inst
-                setattr(obj, arg[2], type(getattr(obj, arg[2]), arg[3]))
+            if arg[2] in obj.to_dict():  # get instance from spec. inst
+                setattr(obj, arg[2], type(getattr(obj, arg[2]))(arg[3]))
             else:
                 setattr(obj, arg[2], arg[3])
-            obj.save
+            obj.save()
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
