@@ -19,3 +19,11 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(user.updated_at, time)
         self.assertNotIsInstance(user.id, uuid.UUID)
         self.assertIsInstance(user.id, str)
+
+    def test_empty(self):
+        '''test_empty - testing for an empty attributes'''
+        user = User()
+        self.assertIsInstance(user.email, str)
+        self.assertIsInstance(user.first_name, str)
+        self.assertIsInstance(user.last_name, str)
+        self.assertIsInstance(user.password, str)

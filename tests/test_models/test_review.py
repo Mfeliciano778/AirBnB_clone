@@ -19,3 +19,10 @@ class TestReview(unittest.TestCase):
         self.assertIsInstance(rev.updated_at, time)
         self.assertNotIsInstance(rev.id, uuid.UUID)
         self.assertIsInstance(rev.id, str)
+
+    def test_empty(self):
+        '''test_empty - testing for an empty attributes'''
+        rev = Review()
+        self.assertIsInstance(rev.place_id, str)
+        self.assertIsInstance(rev.text, str)
+        self.assertIsInstance(rev.user_id, str)
