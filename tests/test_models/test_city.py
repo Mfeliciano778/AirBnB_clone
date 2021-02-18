@@ -7,6 +7,7 @@ from models.base_model import BaseModel
 from models.city import City
 from datetime import datetime as time
 
+
 class TestCity(unittest.TestCase):
     '''TestCity - unit testing class'''
 

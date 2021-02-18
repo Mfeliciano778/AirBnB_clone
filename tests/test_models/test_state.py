@@ -7,6 +7,7 @@ from models.base_model import BaseModel
 from models.state import State
 from datetime import datetime as time
 
+
 class TestState(unittest.TestCase):
     '''TestState - unit testing class'''
 

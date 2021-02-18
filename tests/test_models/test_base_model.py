@@ -6,6 +6,7 @@ import json
 from models.base_model import BaseModel
 from datetime import datetime as time
 
+
 class TestBase(unittest.TestCase):
     '''TestBase - unit testing class'''
 

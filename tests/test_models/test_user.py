@@ -7,6 +7,7 @@ from models.base_model import BaseModel
 from models.user import User
 from datetime import datetime as time
 
+
 class TestUser(unittest.TestCase):
     '''TestUser - unit testing class'''
 
