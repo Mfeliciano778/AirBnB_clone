@@ -19,3 +19,8 @@ class TestAmenity(unittest.TestCase):
         self.assertIsInstance(amen.updated_at, time)
         self.assertNotIsInstance(amen.id, uuid.UUID)
         self.assertIsInstance(amen.id, str)
+
+    def test_str(self):
+        '''test_str - testing for an empty string'''
+        amen = Amenity()
+        self.assertIsInstance(amen.name, str)
