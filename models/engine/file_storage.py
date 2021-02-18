@@ -64,9 +64,3 @@ class FileStorage:
                 self.__objects[key] = a_dict[djo[key]['__class__']](**djo[key])
         except:
             pass
-
-    def delete(self, obj=None):
-        """ Deletes obj from __objects if it exists """
-        # if object exists
-        # if key matches
-        # delete object[key]
