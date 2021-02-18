@@ -19,3 +19,8 @@ class TestState(unittest.TestCase):
         self.assertIsInstance(state.updated_at, time)
         self.assertNotIsInstance(state.id, uuid.UUID)
         self.assertIsInstance(state.id, str)
+
+    def test_empty(self):
+        '''test_empty - testing for an empty attributes'''
+        state = State()
+        self.assertIsInstance(state.name, str)
