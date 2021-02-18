@@ -7,6 +7,7 @@ from models.base_model import BaseModel
 from models.amenity import Amenity
 from datetime import datetime as time
 
+
 class TestAmenity(unittest.TestCase):
     '''TestAmenity - unit testing class'''
 
