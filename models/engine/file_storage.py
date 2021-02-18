@@ -25,8 +25,11 @@ a_dict = {
 
 
 class FileStorage:
-    """ Serializes and deserializes object instances to JSON files """
+    """Serializes and deserializes object instances to JSON files
+    """
 
+    """Variable names for file to create and store the objects in dictionary
+    """
     __file_path = "file.json"
     __objects = {}
 
@@ -42,7 +45,7 @@ class FileStorage:
             return self.__objects
 
     def new(self, obj):
-        """  sets in __objects the obj with key <obj class name>.id """
+        """ Sets in __objects the obj with key <obj class name>.id """
         if obj is not None:
             key = "{}.{}".format(obj.__class__.__name__, obj.id)
             self.__objects[key] = obj
@@ -56,7 +59,7 @@ class FileStorage:
             json.dump(my_obj, f)
 
     def reload(self):
-        """  deserializes the JSON file to __objects """
+        """ Deserializes the JSON file to __objects """
         try:
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
                 djo = json.load(f)
