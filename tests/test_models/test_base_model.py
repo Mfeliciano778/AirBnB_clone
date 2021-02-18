@@ -28,6 +28,6 @@ class TestBase(unittest.TestCase):
     def test_save(self):
         '''test_save - testing save in BaseModel'''
         base3 = BaseModel()
-        old_base = base2.updated_at
-        base2.save()
-        self.assertNotEqual(old_base, base.updated_at)
+        old_base = base3.updated_at
+        base3.save()
+        self.assertNotEqual(old_base, base3.updated_at)
