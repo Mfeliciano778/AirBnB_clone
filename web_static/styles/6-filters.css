@@ -50,6 +50,7 @@ button:hover {
 .popover {
 	list-style-type: none;
 	background-color: #FAFAFA;
+	opacity: 100%;
 	width: 100%;
 	display: none;
 
@@ -59,6 +60,7 @@ button:hover {
 	padding: 25px 0px;
 	margin-left: 0px;
 	margin-top: 8px;
+	position: relative;
 }
 
 .locations:hover .popover {
